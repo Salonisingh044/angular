@@ -1,4 +1,7 @@
 
+
+var foodieApp = angular.module('foodieApp',[]);
+console.log(foodieApp)
 $(document).ready(function() {
 $('#user-email').on('input',function() {
         var email = $('#user-email').val()
