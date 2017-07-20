@@ -18,7 +18,7 @@
 </head>
 
 <body id="app">
-    <div class="login ">
+    <div class="login hidden">
         <div class="login-form">
             <h3> Login </h3>
 			
@@ -49,7 +49,7 @@
 
         </div>
     </div>
-    <div class="main hidden" ng-controller="mainController">
+    <div class="main" ng-controller="mainController">
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -78,9 +78,53 @@
             <div class="hero">
                 <p>Find the best restaurants in town</p>
             </div>
-			<div ng-repeat="restaurant in restaurants">
-                {{restaurant}}
+			<!-----------------search bar------------------>
+			<div class="search-bar">
+    <form>
+    <div class="input-wrapper">
+      <input type="text" class="form-control" placeholder="Search..." ng-model="query"><!----srch bar list ko array me find karega------->
+
+    </div>
+    <button type="submit" class="btn btn-default">Search</button>
+  </form>
+</div>
+<!---------------------restaurant---------------------->
+			<div ng-repeat="restaurant in restaurants | filter:query" class="restaurant">
+    <div class="rest-wrapper">
+        <div class="image">
+            <img src="{{restaurant.image}}" height="100" width="100">
+        </div>
+        <div class="rest-info">
+            <div class="rest-category">
+               <small>{{restaurant.category}} </small>
             </div>
+            <div class="rest-name">
+            <strong>{{restaurant.name}}</strong>
+            </div>
+            <div>
+               <strong> {{restaurant.location}}</strong>
+            </div>
+            <div class="rest-address">
+                {{restaurant.address}}
+            </div>
+        </div>
+    </div>
+    <div class="rest-extra">
+        <div class="type">
+            <div><small>Cuisines:</small></div>
+            <div><small>Cost for Two: </small></div>
+            <div><small>Hours:</small></div>
+        </div>
+        <div class="value">
+            <div>{{restaurant.cuisines}}</div>
+            <div>₹{{restaurant.cost | number}}</div>
+            <div>{{restaurant.hours}}</div>
+        </div>
+    </div>
+    <div class="rating">
+        <strong>{{restaurant.vote}}</strong>
+    </div>
+</div>
         </div>
     </div>
     <script src="js/jquery.js"></script>
