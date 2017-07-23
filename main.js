@@ -113,4 +113,7 @@ name: 'Farzi Cafe',
 })
 
 foodieApp.controller('loginController',function($scope) {
+	$scope.goToHome = function() {
+		console.log('Do Something')
+	}
 })
