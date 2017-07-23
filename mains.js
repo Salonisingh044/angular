@@ -1,7 +1,15 @@
-
-
-var foodieApp = angular.module('foodieApp',[]);
-console.log(foodieApp);
+var foodieApp = angular.module('foodieApp',['ngRoute']);
+foodieApp.config(function ($routeProvider) {
+	$routeProvider
+	.when('/',{
+		templateUrl: 'pages/login.html',
+		controller: 'loginController'
+	})
+	.when('/home',{
+		templateUrl: 'pages/main.html',
+		controller: 'mainController'
+	})
+})
 
 // Controller bnare h//
 
@@ -102,4 +110,7 @@ name: 'Farzi Cafe',
 
 
 
+})
+
+foodieApp.controller('loginController',function($scope) {
 })
